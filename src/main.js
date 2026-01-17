@@ -7,6 +7,8 @@ const isCoarsePointer = window.matchMedia?.('(pointer: coarse)')?.matches ?? fal
 
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
+  updateCurrentYear();
+
   if (prefersReducedMotion) {
     // Ensure nothing remains hidden when animations are disabled.
     document.querySelectorAll('[data-animate]').forEach((el) => el.classList.add('animate-in'));
@@ -40,6 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeThreeButtons();
   }
 });
+
+function updateCurrentYear() {
+  const yearEl = document.getElementById('current-year');
+  if (!yearEl) return;
+  yearEl.textContent = String(new Date().getFullYear());
+}
 
 // ============================================
 // Three.js Button Particle Effects
@@ -466,9 +474,14 @@ function initializeMobileMenu() {
     menu.classList.add('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0');
     menu.classList.add('bg-cozy-cream/95', 'backdrop-blur-md', 'p-4', 'gap-2', 'border-b-4', 'border-cozy-brown/10');
     menu.style.animation = 'fadeInUp 0.3s ease-out forwards';
+
+    // Move focus into the opened menu for keyboard users.
+    requestAnimationFrame(() => {
+      menu.querySelector('a')?.focus?.();
+    });
   };
 
-  const closeMenu = () => {
+  const closeMenu = (returnFocus = true) => {
     menuToggle.setAttribute('aria-expanded', 'false');
     menuToggle.setAttribute('aria-label', 'Open navigation menu');
     menu.setAttribute('aria-hidden', 'true');
@@ -477,11 +490,20 @@ function initializeMobileMenu() {
     menu.classList.add('hidden');
     menu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0');
     menu.classList.remove('bg-cozy-cream/95', 'backdrop-blur-md', 'p-4', 'gap-2', 'border-b-4', 'border-cozy-brown/10');
+
+    if (returnFocus) {
+      // Return focus to the toggle button.
+      menuToggle.focus?.();
+    }
   };
 
   const syncAriaVisibility = () => {
     // At desktop sizes, the nav is visible (md:flex), so it shouldn't be aria-hidden.
     if (window.innerWidth >= 768) {
+      menu.style.animation = 'none';
+      menu.classList.remove('hidden');
+      menu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0');
+      menu.classList.remove('bg-cozy-cream/95', 'backdrop-blur-md', 'p-4', 'gap-2', 'border-b-4', 'border-cozy-brown/10');
       menu.setAttribute('aria-hidden', 'false');
       menuToggle.setAttribute('aria-expanded', 'false');
       menuToggle.setAttribute('aria-label', 'Open navigation menu');
@@ -492,7 +514,7 @@ function initializeMobileMenu() {
   };
 
   // Ensure a consistent initial state.
-  closeMenu();
+  closeMenu(false);
   syncAriaVisibility();
 
   menuToggle.addEventListener('click', () => {
@@ -503,7 +525,7 @@ function initializeMobileMenu() {
 
   // Close on Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape' && window.innerWidth < 768 && menuToggle.getAttribute('aria-expanded') === 'true') {
       closeMenu();
     }
   });
@@ -511,14 +533,9 @@ function initializeMobileMenu() {
   // If we resize to desktop, make sure the mobile overlay state is cleared.
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
-      menu.style.animation = 'none';
-      menu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0');
-      menu.classList.remove('bg-cozy-cream/95', 'backdrop-blur-md', 'p-4', 'gap-2', 'border-b-4', 'border-cozy-brown/10');
-      menu.classList.add('hidden');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', 'Open navigation menu');
-      menu.setAttribute('aria-hidden', 'false');
+      syncAriaVisibility();
     } else {
+      closeMenu(false);
       syncAriaVisibility();
     }
   });
@@ -527,7 +544,7 @@ function initializeMobileMenu() {
   menu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       if (window.innerWidth < 768) {
-        closeMenu();
+        closeMenu(false);
       }
     });
   });

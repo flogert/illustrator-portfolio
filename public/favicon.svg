@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hexagonal canvas icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFB5C5"/>
+      <stop offset="1" stop-color="#9B7EBD"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App backplate -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <rect x="7" y="7" width="50" height="50" rx="12" fill="#F6F0E8" opacity="0.96"/>
+
+  <!-- Easel Structure -->
+  <g stroke="#5A3E2B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 12 L18 54"/> <!-- Left leg -->
+    <path d="M32 12 L46 54"/> <!-- Right leg -->
+    <path d="M32 12 L32 21"/> <!-- Top post (shorter due to hex point) -->
+  </g>
+
+  <!-- Hexagon Canvas -->
+  <path d="M32 20 L43 26 L43 38 L32 44 L21 38 L21 26 Z" fill="#FFFFFF" stroke="#5A3E2B" stroke-width="2.5"/>
+
+  <!-- Ledge -->
+  <line x1="16" y1="44" x2="48" y2="44" stroke="#5A3E2B" stroke-width="3" stroke-linecap="round"/>
+</svg>

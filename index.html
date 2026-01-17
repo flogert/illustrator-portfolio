@@ -2,18 +2,47 @@
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="Flogert Bardhi — game artist & illustrator. Cozy game art, characters, environments, and UI/UX." />
-    <title>Flogert Bardhi - Game Artist</title>
+    <meta name="author" content="Flogert Bardhi" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#F6F0E8" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Flogert Bardhi — Game Artist & Illustrator" />
+    <meta property="og:description" content="Cozy game art, whimsical characters, magical environments, and UI/UX." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Flogert Bardhi — Game Artist & Illustrator" />
+    <meta name="twitter:description" content="Cozy game art, whimsical characters, magical environments, and UI/UX." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=1200&h=630&q=80" />
+
+    <title>Flogert Bardhi — Game Artist & Illustrator</title>
     <script>
       document.documentElement.classList.add('js');
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Press+Start+2P&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Flogert Bardhi",
+        "jobTitle": "Game Artist & Illustrator",
+        "description": "Cozy game art, characters, environments, and UI/UX.",
+        "sameAs": [
+          "https://instagram.com",
+          "https://www.artstation.com"
+        ]
+      }
+    </script>
     <link href="./src/index.css" rel="stylesheet" />
   </head>
   <body class="bg-cozy-cream text-cozy-brown font-body transition-colors duration-500 overflow-x-hidden">
@@ -40,7 +69,7 @@
             d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
-      <nav id="menu" class="hidden md:flex items-center gap-2" aria-label="Primary" aria-hidden="true">
+      <nav id="menu" class="hidden md:flex items-center gap-2" aria-label="Primary">
         <a href="#work" class="nav-link magnetic-btn">Gallery</a>
         <a href="#about" class="nav-link magnetic-btn">About</a>
         <a href="#skills" class="nav-link magnetic-btn">Skills</a>
@@ -82,7 +111,17 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <article class="game-card" data-animate="card" style="--delay: 0">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1560762484-813fc97650a0?w=600&h=400&fit=crop" alt="Character design: Forest Guardian" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1560762484-813fc97650a0?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="Character design: Forest Guardian"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -96,7 +135,17 @@
           
           <article class="game-card" data-animate="card" style="--delay: 1">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600&h=400&fit=crop" alt="Environment art: Moonlit Village" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="Environment art: Moonlit Village"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -110,7 +159,17 @@
           
           <article class="game-card" data-animate="card" style="--delay: 2">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop" alt="Prop design: Potion Collection" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="Prop design: Potion Collection"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -124,7 +183,17 @@
           
           <article class="game-card" data-animate="card" style="--delay: 3">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop" alt="UI design: Rhythm Game UI" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="UI design: Rhythm Game UI"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -138,7 +207,17 @@
           
           <article class="game-card" data-animate="card" style="--delay: 4">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&h=400&fit=crop" alt="Pixel art: Retro Sprites" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="Pixel art: Retro Sprites"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -152,7 +231,17 @@
           
           <article class="game-card" data-animate="card" style="--delay: 5">
             <div class="card-image-wrapper">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Portrait art: NPC Portraits" class="card-image" loading="lazy" decoding="async" />
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=533&q=80"
+                srcset="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=267&q=80 400w, https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=400&q=80 600w, https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&h=533&q=80 800w, https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&h=800&q=80 1200w"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                width="600"
+                height="400"
+                alt="Portrait art: NPC Portraits"
+                class="card-image"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <div class="p-5">
               <div class="flex items-center gap-2 mb-2">
@@ -261,8 +350,13 @@
     </main>
 
     <footer class="text-center p-8 text-sm text-cozy-brown/50 border-t-4 border-cozy-brown/10 relative z-10" data-animate="footer">
-      <p class="font-pixel text-xs">&copy; 2025 Flogert Bardhi</p>
-      <p class="mt-2 text-cozy-brown/40">Made with love</p>
+      <p class="font-pixel text-xs">&copy; <span id="current-year">2026</span> Flogert Bardhi</p>
+      <p class="mt-2 text-cozy-brown/40">Made with love • Built with Vite + Tailwind</p>
+      <div class="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2">
+        <a href="#contact" class="social-link" aria-label="Jump to contact section">Contact</a>
+        <a href="https://www.artstation.com" class="social-link" aria-label="ArtStation profile">ArtStation</a>
+        <a href="https://instagram.com" class="social-link" aria-label="Instagram profile">Instagram</a>
+      </div>
     </footer>
 
     <script type="module" src="./src/main.js"></script>
