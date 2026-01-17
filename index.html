@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Flogert Bardhi — game artist & illustrator. Cozy game art, characters, environments, and UI/UX." />
+    <title>Flogert Bardhi - Game Artist</title>
+    <script>
+      document.documentElement.classList.add('js');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/src/index.css" rel="stylesheet" />
+  </head>
+  <body class="bg-cozy-cream text-cozy-brown font-body transition-colors duration-500 overflow-x-hidden">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
+    <!-- Custom Cursor -->
+    <div id="cursor" aria-hidden="true" class="fixed w-6 h-6 rounded-full pointer-events-none z-[9999] mix-blend-difference bg-white transition-transform duration-100 ease-out"></div>
+    <div id="cursor-trail" aria-hidden="true" class="fixed w-10 h-10 rounded-full pointer-events-none z-[9998] border-2 border-cozy-purple/50 transition-all duration-300 ease-out"></div>
+    
+    <!-- Interactive Constellation Canvas -->
+    <canvas id="constellation" aria-hidden="true" class="fixed inset-0 pointer-events-none z-[1]"></canvas>
+    
+    <!-- Cozy ambient glow -->
+    <div aria-hidden="true" class="fixed top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-radial from-cozy-peach/30 via-transparent to-transparent blur-3xl pointer-events-none z-0"></div>
+
+    <header class="p-6 flex justify-between items-center sticky top-0 bg-cozy-cream/80 backdrop-blur-md z-50 border-b-4 border-cozy-brown/10" data-animate="header">
+      <div class="flex items-center gap-3 group">
+        <h1 class="font-pixel text-sm md:text-base text-cozy-purple">Flogert Bardhi</h1>
+      </div>
+      <button id="menu-toggle" type="button" class="md:hidden p-2 hover:bg-cozy-pink/30 rounded-xl transition-colors" aria-controls="menu" aria-expanded="false" aria-label="Open navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <nav id="menu" class="hidden md:flex items-center gap-2" aria-label="Primary" aria-hidden="true">
+        <a href="#work" class="nav-link magnetic-btn">Gallery</a>
+        <a href="#about" class="nav-link magnetic-btn">About</a>
+        <a href="#skills" class="nav-link magnetic-btn">Skills</a>
+        <a href="#contact" class="nav-link magnetic-btn">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1" class="px-6 py-12 space-y-32 relative z-10">
+      
+      <!-- Hero Section -->
+      <section class="text-center pt-12 pb-8" data-animate="hero">
+        <div class="relative inline-block">
+          <h2 class="font-pixel text-2xl md:text-4xl text-cozy-purple leading-relaxed">
+            Game Artist & Illustrator
+          </h2>
+        </div>
+        <p class="mt-8 text-lg md:text-xl max-w-2xl mx-auto text-cozy-brown/80 leading-relaxed">
+          Hi! I'm Flogert — crafting cozy game art, whimsical characters, and magical digital worlds.
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+          <div class="three-button-wrapper">
+            <canvas class="three-button-canvas" aria-hidden="true"></canvas>
+            <a href="#work" class="cozy-button magnetic-btn group three-btn">View My Work</a>
+          </div>
+          <div class="three-button-wrapper">
+            <canvas class="three-button-canvas" aria-hidden="true"></canvas>
+            <a href="#contact" class="cozy-button-outline magnetic-btn group three-btn">Let's Chat</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work/Gallery Section -->
+      <section id="work" class="max-w-6xl mx-auto" data-animate="gallery">
+        <div class="text-center mb-12">
+          <h2 class="font-pixel text-xl md:text-2xl text-cozy-purple">Art Gallery</h2>
+          <p class="mt-4 text-cozy-brown/70">A collection of cozy game art & illustrations</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="game-card" data-animate="card" style="--delay: 0">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1560762484-813fc97650a0?w=600&h=400&fit=crop" alt="Character design: Forest Guardian" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">Character Design</span>
+                <span class="badge">RPG</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">Forest Guardian</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">A mystical cat warrior protecting the enchanted woods</p>
+            </div>
+          </article>
+          
+          <article class="game-card" data-animate="card" style="--delay: 1">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=600&h=400&fit=crop" alt="Environment art: Moonlit Village" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">Environment</span>
+                <span class="badge">Night</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">Moonlit Village</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">Cozy cottages under a starry purple sky</p>
+            </div>
+          </article>
+          
+          <article class="game-card" data-animate="card" style="--delay: 2">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop" alt="Prop design: Potion Collection" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">Props</span>
+                <span class="badge">Magic</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">Potion Collection</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">Sparkling potions for your next adventure</p>
+            </div>
+          </article>
+          
+          <article class="game-card" data-animate="card" style="--delay: 3">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&h=400&fit=crop" alt="UI design: Rhythm Game UI" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">UI/UX</span>
+                <span class="badge">Music</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">Rhythm Game UI</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">Playful interface for a musical adventure</p>
+            </div>
+          </article>
+          
+          <article class="game-card" data-animate="card" style="--delay: 4">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&h=400&fit=crop" alt="Pixel art: Retro Sprites" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">Pixel Art</span>
+                <span class="badge">Retro</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">Retro Sprites</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">Nostalgic pixel characters with modern charm</p>
+            </div>
+          </article>
+          
+          <article class="game-card" data-animate="card" style="--delay: 5">
+            <div class="card-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" alt="Portrait art: NPC Portraits" class="card-image" loading="lazy" decoding="async" />
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge">Portrait</span>
+                <span class="badge">NPC</span>
+              </div>
+              <h3 class="font-bold text-lg text-cozy-purple">NPC Portraits</h3>
+              <p class="mt-2 text-sm text-cozy-brown/70">Expressive character portraits for visual novels</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="max-w-4xl mx-auto" data-animate="about">
+        <div class="cozy-card p-8 md:p-12">
+          <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="relative">
+              <div class="w-40 h-40 rounded-full bg-gradient-to-br from-cozy-pink to-cozy-purple p-1">
+                <div class="w-full h-full rounded-full bg-cozy-cream flex items-center justify-center font-pixel text-2xl text-cozy-purple">
+                  FB
+                </div>
+              </div>
+            </div>
+            <div class="text-center md:text-left flex-1">
+              <h2 class="font-pixel text-xl text-cozy-purple mb-4">About Me</h2>
+              <p class="text-lg text-cozy-brown/80 leading-relaxed mb-4">
+                Hey there! I'm Flogert, a game artist who lives for creating cozy, heartwarming digital worlds.
+              </p>
+              <p class="text-cozy-brown/70 leading-relaxed mb-4">
+                When I'm not drawing cute characters or designing magical environments, you'll find me playing indie games, sipping matcha lattes, or cuddling with my cat.
+              </p>
+              <p class="text-cozy-brown/70 leading-relaxed">
+                I specialize in character design, environment art, and UI/UX for games. Let's create something magical together!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="max-w-5xl mx-auto text-center" data-animate="skills">
+        <h2 class="font-pixel text-xl md:text-2xl text-cozy-purple mb-4">Skills & Tools</h2>
+        <p class="text-cozy-brown/70 mb-10">My creative arsenal for making game magic</p>
+        
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="skill-card" data-animate="skill" style="--delay: 0">
+            <h3 class="font-bold text-cozy-purple">Digital Illustration</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">Procreate, Photoshop, Clip Studio</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 95%"></div></div>
+          </div>
+          
+          <div class="skill-card" data-animate="skill" style="--delay: 1">
+            <h3 class="font-bold text-cozy-purple">Pixel Art</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">Aseprite, Piskel</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 88%"></div></div>
+          </div>
+          
+          <div class="skill-card" data-animate="skill" style="--delay: 2">
+            <h3 class="font-bold text-cozy-purple">Game UI/UX</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">Figma, Unity UI</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 85%"></div></div>
+          </div>
+          
+          <div class="skill-card" data-animate="skill" style="--delay: 3">
+            <h3 class="font-bold text-cozy-purple">Environment Design</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">World building & backgrounds</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 90%"></div></div>
+          </div>
+          
+          <div class="skill-card" data-animate="skill" style="--delay: 4">
+            <h3 class="font-bold text-cozy-purple">Character Design</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">Original characters & mascots</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 92%"></div></div>
+          </div>
+          
+          <div class="skill-card" data-animate="skill" style="--delay: 5">
+            <h3 class="font-bold text-cozy-purple">Animation</h3>
+            <p class="text-sm text-cozy-brown/60 mt-2">Sprite animation, motion graphics</p>
+            <div class="skill-bar mt-3"><div class="skill-fill" style="--width: 80%"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="max-w-2xl mx-auto text-center" data-animate="contact">
+        <div class="cozy-card p-8 md:p-12">
+          <h2 class="font-pixel text-xl text-cozy-purple mb-4">Let's Create Together!</h2>
+          <p class="text-cozy-brown/70 mb-8">
+            Have a game project in mind? Looking for cozy art? <br/>
+            I'd love to hear from you!
+          </p>
+          
+          <a href="mailto:hello@flogertbardhi.com" class="cozy-button inline-flex items-center gap-2 text-lg">
+            hello@flogertbardhi.com
+          </a>
+          
+          <div class="mt-10 flex justify-center gap-6">
+            <a href="https://twitter.com" class="social-link" aria-label="Twitter">Twitter</a>
+            <a href="https://instagram.com" class="social-link" aria-label="Instagram">Instagram</a>
+            <a href="https://www.artstation.com" class="social-link" aria-label="ArtStation">ArtStation</a>
+            <a href="https://discord.com" class="social-link" aria-label="Discord">Discord</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center p-8 text-sm text-cozy-brown/50 border-t-4 border-cozy-brown/10 relative z-10" data-animate="footer">
+      <p class="font-pixel text-xs">&copy; 2025 Flogert Bardhi</p>
+      <p class="mt-2 text-cozy-brown/40">Made with love</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

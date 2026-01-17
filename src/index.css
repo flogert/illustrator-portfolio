@@ -1,0 +1,662 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cozy-cream: #FDF6E3;
+    --cozy-peach: #FFDAB3;
+    --cozy-pink: #FFB5C5;
+    --cozy-purple: #9B7EBD;
+    --cozy-brown: #5D4E37;
+    --cozy-lavender: #E8D5F2;
+  }
+
+  /* Keyboard accessibility */
+  :focus-visible {
+    outline: 3px solid var(--cozy-purple);
+    outline-offset: 4px;
+  }
+
+  /* Skip link */
+  .skip-link {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 9999px;
+    background: var(--cozy-cream);
+    border: 3px solid rgba(155, 126, 189, 0.35);
+    color: var(--cozy-brown);
+    transform: translateY(-200%);
+    transition: transform 0.2s ease;
+    z-index: 10000;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /* Hide default cursor only when we are actually using the custom cursor */
+  @media (pointer: fine) {
+    body.cozy-cursor-hidden {
+      cursor: none;
+    }
+
+    body.cozy-cursor-hidden a,
+    body.cozy-cursor-hidden button,
+    body.cozy-cursor-hidden .magnetic-btn {
+      cursor: none;
+    }
+  }
+
+  /* On touch devices, ensure the custom cursor UI never shows */
+  @media (pointer: coarse) {
+    #cursor,
+    #cursor-trail {
+      display: none !important;
+    }
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Navigation Links */
+  .nav-link {
+    @apply px-4 py-2 rounded-full text-sm font-semibold text-cozy-brown/80 hover:text-cozy-purple 
+           transition-all duration-300 hover:scale-105;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 60%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    opacity: 0.3;
+  }
+  
+  .nav-link:hover::before {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Three.js Button Wrapper */
+  .three-button-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .three-button-canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 300%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .three-btn {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Cozy Button Styles */
+  .cozy-button {
+    @apply inline-flex items-center px-6 py-3 
+           bg-gradient-to-r from-cozy-pink to-cozy-purple 
+           text-white font-bold rounded-full
+           shadow-lg shadow-cozy-pink/30
+           hover:shadow-xl hover:shadow-cozy-purple/40
+           hover:scale-105 hover:-translate-y-1
+           transition-all duration-300 ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cozy-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .cozy-button:hover::before {
+    left: 100%;
+  }
+
+  .cozy-button-outline {
+    @apply inline-flex items-center px-6 py-3 
+           border-3 border-cozy-purple text-cozy-purple font-bold rounded-full
+           hover:bg-cozy-purple hover:text-white
+           hover:scale-105 hover:-translate-y-1
+           transition-all duration-300 ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cozy-button-outline::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--cozy-pink), var(--cozy-purple), var(--cozy-peach), var(--cozy-pink));
+    background-size: 400% 400%;
+    border-radius: 9999px;
+    z-index: -1;
+    opacity: 0;
+    animation: gradientShift 3s ease infinite;
+    transition: opacity 0.3s ease;
+  }
+  
+  .cozy-button-outline:hover::after {
+    opacity: 1;
+  }
+
+  /* Game Card Styles */
+  .game-card {
+    @apply bg-white rounded-3xl overflow-hidden
+           border-4 border-cozy-brown/10
+           shadow-lg shadow-cozy-brown/10
+           hover:shadow-2xl hover:shadow-cozy-purple/20
+           hover:-translate-y-2 hover:border-cozy-purple/30
+           transition-all duration-500 ease-out;
+  }
+
+  .card-image-wrapper {
+    @apply relative overflow-hidden;
+  }
+
+  .card-image {
+    @apply w-full h-52 object-cover 
+           transition-transform duration-700 ease-out;
+  }
+
+  .game-card:hover .card-image {
+    @apply scale-110;
+  }
+
+  .card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-cozy-purple/60 to-transparent
+           flex items-end justify-center pb-4
+           opacity-0 transition-opacity duration-300;
+  }
+
+  .game-card:hover .card-overlay {
+    @apply opacity-100;
+  }
+
+  /* Badge */
+  .badge {
+    @apply text-xs px-3 py-1 rounded-full 
+           bg-cozy-lavender text-cozy-purple font-semibold;
+  }
+
+  /* Cozy Card */
+  .cozy-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-3xl
+           border-4 border-cozy-brown/10
+           shadow-xl shadow-cozy-brown/5;
+  }
+
+  /* Skill Card */
+  .skill-card {
+    @apply bg-white rounded-2xl p-6 text-center
+           border-3 border-cozy-brown/10
+           hover:border-cozy-pink/50 hover:shadow-lg hover:shadow-cozy-pink/20
+           hover:-translate-y-1
+           transition-all duration-300;
+  }
+
+  .skill-bar {
+    @apply h-3 bg-cozy-lavender rounded-full overflow-hidden;
+  }
+
+  .skill-fill {
+    @apply h-full bg-gradient-to-r from-cozy-pink to-cozy-purple rounded-full;
+    width: 0;
+    animation: fillSkill 1.5s ease-out forwards;
+    animation-delay: calc(var(--delay, 0) * 0.1s);
+  }
+
+  /* Social Links */
+  .social-link {
+    @apply p-3 rounded-full bg-cozy-lavender/50
+           hover:bg-cozy-pink/50 hover:scale-110 hover:-translate-y-1
+           transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .animate-bounce-slow {
+    animation: bounceSlow 2s ease-in-out infinite;
+  }
+
+  .animate-ping-slow {
+    animation: pingSlow 2s ease-in-out infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  /* Particle animation */
+  .particle {
+    @apply absolute rounded-full pointer-events-none;
+    animation: particleFloat 15s linear infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes bounceSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pingSlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes fillSkill {
+  to {
+    width: var(--width);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Framer Motion Animation Styles */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Scroll-triggered animation classes (progressive enhancement)
+   - Without JS: content stays visible.
+   - With JS: we start hidden and reveal via .animate-in.
+*/
+[data-animate] {
+  opacity: 1;
+}
+
+.js [data-animate] {
+  opacity: 0;
+}
+
+[data-animate].animate-in {
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-animate] {
+    opacity: 1;
+  }
+}
+
+[data-animate="header"].animate-in {
+  animation-name: fadeInUp;
+  animation-delay: 0.1s;
+}
+
+[data-animate="hero"].animate-in {
+  animation-name: fadeInScale;
+  animation-delay: 0.2s;
+}
+
+[data-animate="gallery"].animate-in {
+  animation-name: fadeInUp;
+  animation-delay: 0.1s;
+}
+
+[data-animate="card"].animate-in {
+  animation-name: fadeInUp;
+  animation-delay: calc(var(--delay, 0) * 0.1s);
+}
+
+[data-animate="about"].animate-in {
+  animation-name: fadeInScale;
+  animation-delay: 0.15s;
+}
+
+[data-animate="skills"].animate-in {
+  animation-name: fadeInUp;
+}
+
+[data-animate="skill"].animate-in {
+  animation-name: fadeInUp;
+  animation-delay: calc(var(--delay, 0) * 0.08s);
+}
+
+[data-animate="contact"].animate-in {
+  animation-name: fadeInScale;
+  animation-delay: 0.1s;
+}
+
+[data-animate="footer"].animate-in {
+  animation-name: fadeInUp;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cozy-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--cozy-pink), var(--cozy-purple));
+  border-radius: 10px;
+  border: 3px solid var(--cozy-cream);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--cozy-purple), var(--cozy-pink));
+}
+
+/* Selection highlight */
+::selection {
+  background: var(--cozy-pink);
+  color: white;
+}
+
+/* Border width utility */
+.border-3 {
+  border-width: 3px;
+}
+
+/* ============================================
+   UNIQUE ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pulse Ring Animation */
+.controller-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.animate-pulse-ring {
+  position: absolute;
+  inset: -20px;
+  border: 3px solid var(--cozy-purple);
+  border-radius: 50%;
+  animation: pulseRing 2s ease-out infinite;
+}
+
+.controller-wrapper::before,
+.controller-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -30px;
+  border: 2px solid var(--cozy-pink);
+  border-radius: 50%;
+  animation: pulseRing 2s ease-out infinite;
+}
+
+.controller-wrapper::before {
+  animation-delay: 0.5s;
+}
+
+.controller-wrapper::after {
+  animation-delay: 1s;
+  border-color: var(--cozy-peach);
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Slow Spin Animation */
+.hover\:animate-spin-slow:hover {
+  animation: spinSlow 3s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Magnetic Button Effect (enhanced via JS) */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Text Reveal Animation */
+.text-reveal {
+  overflow: hidden;
+}
+
+.text-reveal span {
+  display: inline-block;
+  animation: textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(var(--char-index, 0) * 0.03s);
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Shine Effect */
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: left 0.75s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.game-card:hover::before {
+  left: 150%;
+}
+
+/* Neon Glow Effect */
+.neon-glow {
+  text-shadow: 
+    0 0 5px var(--cozy-pink),
+    0 0 10px var(--cozy-pink),
+    0 0 20px var(--cozy-purple),
+    0 0 40px var(--cozy-purple);
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Morph Animation for shapes */
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50% { border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%; }
+  75% { border-radius: 60% 30% 60% 40% / 70% 40% 50% 60%; }
+}
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+/* Rainbow Text */
+.rainbow-text {
+  background: linear-gradient(
+    90deg,
+    var(--cozy-pink),
+    var(--cozy-purple),
+    var(--cozy-peach),
+    var(--cozy-lavender),
+    var(--cozy-pink)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowMove 3s linear infinite;
+}
+
+@keyframes rainbowMove {
+  to { background-position: 200% center; }
+}
+
+/* Typewriter cursor */
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
