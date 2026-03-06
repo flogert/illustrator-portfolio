@@ -1,6 +1,6 @@
-# Illustrator / Game Artist Portfolio
+# Flogert Portfolio
 
-A cozy, animated portfolio site for showcasing game art, illustrations, characters, environments, and UI/UX work.
+A minimal, Swiss-style portfolio site for showcasing game art, illustrations, characters, environments, and UI/UX work designed for Flogert.
 
 ## Tech
 
@@ -24,9 +24,9 @@ npm run build
 npm run preview
 ```
 
-## Deploy (GitHub Pages)
+## Connect to GitHub Pages
 
-This repo includes a GitHub Actions workflow that builds the site and deploys the `dist/` output to GitHub Pages on pushes to `main`.
+Push to your repository and enable GitHub Pages in Settings > Pages (Source: GitHub Actions).
 
 ## Customize content
 

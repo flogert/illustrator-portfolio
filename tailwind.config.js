@@ -4,48 +4,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        'cozy-cream': '#FDF6E3',
-        'cozy-peach': '#FFDAB3',
-        'cozy-pink': '#FFB5C5',
-        'cozy-purple': '#9B7EBD',
-        'cozy-brown': '#5D4E37',
-        'cozy-lavender': '#E8D5F2',
+        'brand-dark': '#0E0E0E', // Deep black background
+        'brand-light': '#E5E5E5', // Off-white text
+        'brand-accent': '#FF3C00', // The bold orange from the image
+        'brand-gray': '#2A2A2A', // Card backgrounds
       },
       fontFamily: {
-        'pixel': ['"Press Start 2P"', 'cursive'],
-        'body': ['Nunito', 'sans-serif'],
+        'display': ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+        'mono': ['"Courier New"', 'Courier', 'monospace'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       animation: {
-        'float': 'float 3s ease-in-out infinite',
-        'float-delayed': 'float 3s ease-in-out infinite 1.5s',
-        'bounce-slow': 'bounceSlow 2s ease-in-out infinite',
-        'ping-slow': 'pingSlow 2s ease-in-out infinite',
-        'wiggle': 'wiggle 0.5s ease-in-out',
+        'marquee': 'marquee 25s linear infinite',
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-          '50%': { transform: 'translateY(-15px) rotate(5deg)' },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
         },
-        bounceSlow: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-8px)' },
-        },
-        pingSlow: {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.5', transform: 'scale(1.2)' },
-        },
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(0deg)' },
-          '25%': { transform: 'rotate(-10deg)' },
-          '75%': { transform: 'rotate(10deg)' },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
-      borderWidth: {
-        '3': '3px',
+      borderRadius: {
+        'none': '0',
+        'sm': '2px',
       },
     },
   },
